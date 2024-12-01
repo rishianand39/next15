@@ -92,9 +92,9 @@ export default async function Page() {
       'Content-Type': 'application/json',
       clientid : process?.env?.NEXT_PUBLIC_CLIENT_ID as string,
       secret : process?.env?.NEXT_PUBLIC_SECRET as string,
-      Authorization : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGIxODMwNDYxYmRkZTQ4Y2UxMzg5MGMiLCJhcHBUeXBlIjoiNjVkYzI3N2M5ODYzNjFlYzgwZDMwMDZlIiwicm9sZUlkIjoiNjMyMDc4OTVjZmZkN2MyMWViZTdjOGY2Iiwic2Vzc2lvbklkIjoiYWxwaGFudW1lcmljIiwiaWF0IjoxNzMzMDM0MjkyLCJleHAiOjE3MzMyMDcwOTJ9.b1oUz9eghT0GNYQcXYE5CRSNGj37RJ9sRhfVJQhDa0s'
+      Authorization : process?.env?.NEXT_PUBLIC_TOKEN as string,
     },
-    body: JSON.stringify({ businessUnitId: "661e24a0d3d7d8a112f2940f" }),
+    body: JSON.stringify({ businessUnitId: process?.env?.NEXT_PUBLIC_BUSINESS_UNITID as string }),
   })
   const aboutUsRes = (await data.json()).data
   return (
