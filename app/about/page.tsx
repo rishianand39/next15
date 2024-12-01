@@ -25,14 +25,14 @@ import { Metadata } from "next";
 // import { useEffect, useState } from "react";
 // import useSWR from 'swr'
 
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  date: string;
-  category: string;
-}
+// interface Post {
+//   id: number;
+//   title: string;
+//   content: string;
+//   author: string;
+//   date: string;
+//   category: string;
+// }
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -64,16 +64,48 @@ export const metadata: Metadata = {
   }
 };
 
+// {
+//   businessUnitId: process.env.NEXT_PUBLIC_BUSINESS_UNITID,
+// },
+// {
+//   headers: {
+//     Authorization: `${token}`,
+//   },
+// }
+
+interface AboutUsResponse {
+  aboutUs: string;
+  activeFlag: boolean;
+  businessUnitId: string;
+  creationDate: string;
+  deleteFlag: boolean;
+  heading: string;
+  id: string;
+  modifiedDate: string;
+  _id: string;
+}
+
 export default async function Page() {
-  const data = await fetch('https://api.vercel.app/blog')
-  const posts : Post[] = await data.json()
-    console.log(posts)
-    return (
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id}>{post.title}</li>
-        ))}
-        about sas
-      </ul>
-    )
+  const data = await fetch('https://apigw-turtle.honebi.online/ecommerce-gateway/about-us/filter', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      clientid : '2508190883',
+      secret : '9b395a79-b30a-4f3a-abb4-22b76d62ee05',
+      Authorization : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGIxODMwNDYxYmRkZTQ4Y2UxMzg5MGMiLCJhcHBUeXBlIjoiNjVkYzI3N2M5ODYzNjFlYzgwZDMwMDZlIiwicm9sZUlkIjoiNjMyMDc4OTVjZmZkN2MyMWViZTdjOGY2Iiwic2Vzc2lvbklkIjoiYWxwaGFudW1lcmljIiwiaWF0IjoxNzMzMDM0MjkyLCJleHAiOjE3MzMyMDcwOTJ9.b1oUz9eghT0GNYQcXYE5CRSNGj37RJ9sRhfVJQhDa0s'
+    },
+    body: JSON.stringify({ businessUnitId: "661e24a0d3d7d8a112f2940f" }),
+  })
+  const aboutUsRes = (await data.json()).data
+  return (
+    <ul>
+      {aboutUsRes?.map((about : AboutUsResponse) => (
+        <div key={about.id}>
+          <h3>{about?.heading}</h3>
+        <li dangerouslySetInnerHTML={{ __html: about?.aboutUs }} />
+        </div>
+      ))}
+      about sas
+    </ul>
+  )
 }
