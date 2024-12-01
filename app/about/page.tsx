@@ -25,14 +25,14 @@ import { Metadata } from "next";
 // import { useEffect, useState } from "react";
 // import useSWR from 'swr'
 
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  date: string;
-  category: string;
-}
+// interface Post {
+//   id: number;
+//   title: string;
+//   content: string;
+//   author: string;
+//   date: string;
+//   category: string;
+// }
 
 export const metadata: Metadata = {
   title: "About Us",
