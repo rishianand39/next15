@@ -22,8 +22,8 @@
 // }
 
 import { Metadata } from "next";
-import { useEffect, useState } from "react";
-import useSWR from 'swr'
+// import { useEffect, useState } from "react";
+// import useSWR from 'swr'
 
 interface Post {
   id: number;
@@ -65,32 +65,32 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const [posts, setPosts] = useState<Post[]>([])
-  const [filter, setFilter] = useState<boolean>(false)
-  const { data, error } = useSWR('https://api.vercel.app/blog', async (url) => {
-    const response = await fetch(url)
-    return await response.json()
-  })
+  // const [posts, setPosts] = useState<Post[]>([])
+  // const [filter, setFilter] = useState<boolean>(false)
+  // const { data, error } = useSWR('https://api.vercel.app/blog', async (url) => {
+  //   const response = await fetch(url)
+  //   return await response.json()
+  // })
 
-  useEffect(() => {
-    if (data) {
-      setPosts(data)
-    }
-  }, [data])
+  // useEffect(() => {
+  //   if (data) {
+  //     setPosts(data)
+  //   }
+  // }, [data])
 
-  if (error) return <div>Failed to load</div>
-  if (!data) return <div>Loading...</div>
+  // if (error) return <div>Failed to load</div>
+  // if (!data) return <div>Loading...</div>
 
-  const updateFilter = () => {
-    setFilter(!filter)
-  }
-  console.log(filter, "filterd")
+  // const updateFilter = () => {
+  //   setFilter(!filter)
+  // }
+  // console.log(filter, "filterd")
   return (
     <ul>
-      <button onClick={updateFilter}>Update Filter</button>
+      {/* <button onClick={updateFilter}>Update Filter</button>
       {posts.map((post) => (
         <li key={post.id}>{post.title}</li>
-      ))}
+      ))} */}
       about sas
     </ul>
   )
