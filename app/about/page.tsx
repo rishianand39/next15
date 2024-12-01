@@ -65,8 +65,8 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  let data = await fetch('https://api.vercel.app/blog')
-    let posts : Post[] = await data.json()
+  const data = await fetch('https://api.vercel.app/blog')
+  const posts : Post[] = await data.json()
     console.log(posts)
     return (
       <ul>
