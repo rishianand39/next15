@@ -21,7 +21,6 @@
 //   )
 // }
 
-"use client"
 import { Metadata } from "next";
 import { useEffect, useState } from "react";
 import useSWR from 'swr'
