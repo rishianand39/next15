@@ -86,12 +86,12 @@ interface AboutUsResponse {
 }
 
 export default async function Page() {
-  const data = await fetch('https://apigw-turtle.honebi.online/ecommerce-gateway/about-us/filter', {
+  const data = await fetch(`${process?.env?.NEXT_PUBLIC_API_BASE_URL}/about-us/filter`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      clientid : '2508190883',
-      secret : '9b395a79-b30a-4f3a-abb4-22b76d62ee05',
+      clientid : process?.env?.NEXT_PUBLIC_CLIENT_ID as string,
+      secret : process?.env?.NEXT_PUBLIC_SECRET as string,
       Authorization : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGIxODMwNDYxYmRkZTQ4Y2UxMzg5MGMiLCJhcHBUeXBlIjoiNjVkYzI3N2M5ODYzNjFlYzgwZDMwMDZlIiwicm9sZUlkIjoiNjMyMDc4OTVjZmZkN2MyMWViZTdjOGY2Iiwic2Vzc2lvbklkIjoiYWxwaGFudW1lcmljIiwiaWF0IjoxNzMzMDM0MjkyLCJleHAiOjE3MzMyMDcwOTJ9.b1oUz9eghT0GNYQcXYE5CRSNGj37RJ9sRhfVJQhDa0s'
     },
     body: JSON.stringify({ businessUnitId: "661e24a0d3d7d8a112f2940f" }),
